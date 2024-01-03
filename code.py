@@ -30,10 +30,8 @@ if __name__ == "__main__":
     import pandas as pd
 
     clf = RandomForestClassifier(n_estimators = 200)
-
-    # Train the model
-    data_train_file = open("preprocessed_train_data.data", "r")
-    ini_train_data = data_train_file.readlines()
+    with open("preprocessed_train_data.data", "r") as data_train_file:
+        ini_train_data = data_train_file.readlines()
     train_data = get_data(ini_train_data)
     X_train, y_train = split_data(train_data)
     clf.fit(X_train, y_train)
